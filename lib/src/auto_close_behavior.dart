@@ -124,7 +124,6 @@ class SlidableAutoCloseBehaviorInteractor extends StatelessWidget {
 
 /// A notification used to close other [Slidable] widgets with the same
 /// [groupTag].
-
 class SlidableAutoCloseNotification {
   /// Creates a notification that can be used to close other [Slidable] widgets
   /// with the same [groupTag].
@@ -265,7 +264,6 @@ class SlidableAutoCloseNotificationSender extends StatelessWidget {
 }
 
 /// A notification used to indicate if a barrier should be pub on [Slidable]
-
 class SlidableAutoCloseBarrierNotification {
   /// Creates a notification to activate/deactivate the barrier on [Slidable]
   /// widgets.
