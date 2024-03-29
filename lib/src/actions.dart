@@ -87,7 +87,7 @@ class CustomSlidableAction extends StatelessWidget {
   Widget build(BuildContext context) {
     final effectiveForegroundColor = foregroundColor ??
         (ThemeData.estimateBrightnessForColor(backgroundColor) ==
-                Brightness.light
+            Brightness.light
             ? Colors.black
             : Colors.white);
 
@@ -99,10 +99,8 @@ class CustomSlidableAction extends StatelessWidget {
           style: OutlinedButton.styleFrom(
             padding: padding,
             backgroundColor: backgroundColor,
-            surfaceTintColor: effectiveForegroundColor,
-
-            // primary: effectiveForegroundColor,
-            // onSurface: effectiveForegroundColor,
+            disabledForegroundColor: effectiveForegroundColor.withOpacity(0.38),
+            foregroundColor: effectiveForegroundColor,
             shape: RoundedRectangleBorder(
               borderRadius: borderRadius,
             ),
@@ -144,9 +142,8 @@ class SlidableAction extends StatelessWidget {
     this.label,
     this.borderRadius = BorderRadius.zero,
     this.padding,
-    this.imageIcon,
   })  : assert(flex > 0),
-        // assert(icon != null || label != null),
+        assert(icon != null || label != null),
         super(key: key);
 
   /// {@macro slidable.actions.flex}
@@ -160,7 +157,6 @@ class SlidableAction extends StatelessWidget {
 
   /// {@macro slidable.actions.autoClose}
   final bool autoClose;
-  final Widget? imageIcon;
 
   /// {@macro slidable.actions.onPressed}
   final SlidableActionCallback? onPressed;
@@ -192,10 +188,6 @@ class SlidableAction extends StatelessWidget {
       );
     }
 
-    if (imageIcon != null) {
-      children.add(imageIcon!);
-    }
-
     if (label != null) {
       if (children.isNotEmpty) {
         children.add(
@@ -214,15 +206,15 @@ class SlidableAction extends StatelessWidget {
     final child = children.length == 1
         ? children.first
         : Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              ...children.map(
-                (child) => Flexible(
-                  child: child,
-                ),
-              )
-            ],
-          );
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        ...children.map(
+              (child) => Flexible(
+            child: child,
+          ),
+        )
+      ],
+    );
 
     return CustomSlidableAction(
       borderRadius: borderRadius,
